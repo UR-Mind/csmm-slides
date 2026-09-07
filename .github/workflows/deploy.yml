@@ -32,6 +32,16 @@ jobs:
       - name: Build slides
         run: npx slidev build CSMM.md --base /csmm-slides/ --out dist
 
+      - name: Export PDF (best effort, never blocks deploy)
+        continue-on-error: true
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra
+          npm i -D playwright-chromium
+          sudo npx playwright install --with-deps chromium
+          npx slidev export CSMM.md --output csmm-slides.pdf --timeout 90000
+          cp csmm-slides.pdf dist/
+
       - name: Add .nojekyll
         run: touch dist/.nojekyll
 
