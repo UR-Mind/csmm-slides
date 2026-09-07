@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-csmm/
+.vite/
+.slidev/
+
+# 未参与构建的原始素材与其他演示项目
+/assets/
+_shared/
+report-2026q2/
+6a638aeebfe28fd8e1983951/
+csmm-poster/
+
+*.zip
+*.log
+.DS_Store
+Thumbs.db
